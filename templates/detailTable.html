@@ -1,0 +1,41 @@
+<link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+
+
+<html>
+<head>
+    <title>Table Information</title>
+</head>
+<body>
+    <h1>Table: {{ table }}</h1>
+
+    <h2>Primary Keys</h2>
+    <ul>
+    {% for key in primary_keys %}
+        <li>{{ key }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Fields</h2>
+
+    <form method="post" action="/table/data">
+        <td><input type="number" min="0" name="{{ table }}"></td>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>quantity</th>
+            </tr>
+            {% for field in fields %}
+            <tr>
+                <td>{{ field.name }}</td>
+                <td>{{ field.type }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <input type="submit" value="Submit">
+
+    </form>
+</body>
+</html>
