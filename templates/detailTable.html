@@ -1,10 +1,10 @@
-<link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+{% extends "main.html" %}
 
+{% block title %}
+    Detail Table
+{% endblock %}
 
-<html>
-<head>
-    <title>Table Information</title>
-</head>
+{% block body %}
 <body>
     <h1>Table: {{ table }}</h1>
 
@@ -14,10 +14,12 @@
         <li>{{ key }}</li>
     {% endfor %}
     </ul>
+    <div class='my-div'>
+        <h2>Fields</h2>
+    </div>
 
-    <h2>Fields</h2>
 
-    <form method="post" action="/table/data">
+    <form id="data-generate2">
         <td><input type="number" min="0" name="{{ table }}"></td>
 
         <table>
@@ -34,8 +36,8 @@
             {% endfor %}
         </table>
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" onclick="submitForm()">
 
     </form>
 </body>
-</html>
+{% endblock %}

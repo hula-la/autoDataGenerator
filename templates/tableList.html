@@ -1,16 +1,35 @@
-<link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+{% extends "main.html" %}
 
+{% block title %}
+    Detail Table
+{% endblock %}
 
-<html>
-<head>
-    <title>Table Information</title>
-</head>
+{% block body %}
 <body>
 
     <h2>Tables</h2>
 
-    {% for table in tables %}
-    <a href="{{ '/tables/' + table }}">{{ table }}</a>
-    {% endfor %}
+    <form id="data-generate">
+
+        <table>
+            <tr>
+                <th>Table Name</th>
+                <th>quantity</th>
+            </tr>
+
+            {% for table in tables %}
+            <tr>
+                <td><a href="{{ '/tables/' + table }}">{{ table }}</a></td>
+                <td><input type="number" min="0" name="{{ table }}"></td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+
+        <input type="submit" value="Submit" onclick="submitForm()">
+
+    </form>
+
+
 </body>
-</html>
+{% endblock %}

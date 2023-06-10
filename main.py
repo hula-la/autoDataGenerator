@@ -11,7 +11,6 @@ from typing import Dict, Any
 
 
 
-# password = os.environ.get('PASSWORD')
 
 def create_app() -> FastAPI:
 
@@ -118,6 +117,7 @@ def insert_data(table_name: str, quantity: int, db: Session = Depends(get_db)):
 
         db.add(new_instance)
         db.commit()
+
 
 
 
